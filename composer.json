@@ -1,0 +1,63 @@
+{
+    "name": "coquibot/coqui-toolkit-libvirt",
+    "description": "Libvirt virtualization toolkit for Coqui — manage VMs, networks, snapshots, and GPU passthrough via virsh/virt-install",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Carmelo Santana"
+        }
+    ],
+    "keywords": [
+        "php-agents",
+        "libvirt",
+        "virtualization",
+        "virsh",
+        "qemu",
+        "kvm",
+        "coqui",
+        "toolkit"
+    ],
+    "require": {
+        "php": "^8.4"
+    },
+    "require-dev": {
+        "carmelosantana/php-agents": "^0.7",
+        "pestphp/pest": "^3.0",
+        "phpstan/phpstan": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CoquiBot\\Toolkits\\Libvirt\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CoquiBot\\Toolkits\\Libvirt\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "analyse": "phpstan analyse"
+    },
+    "extra": {
+        "php-agents": {
+            "toolkits": [
+                "CoquiBot\\Toolkits\\Libvirt\\LibvirtToolkit"
+            ],
+            "credentials": {
+                "LIBVIRT_URI": "Libvirt connection URI — defaults to qemu:///system. Use qemu:///session for userspace VMs."
+            },
+            "description": "Virtualization — create and manage VMs, networks, snapshots, shared folders, GPU passthrough, and web console access via virsh/virt-install"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
